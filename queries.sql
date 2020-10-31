@@ -19,7 +19,7 @@ INNER JOIN departments as DP ON DP.dept_no = DM.dept_no;
 SELECT DP.dept_name, EMP.emp_no, EMP.last_name, EMP.first_name
 FROM dept_emp as DE
 INNER JOIN employees as EMP ON EMP.emp_no = DE.emp_no
-INNER JOIN departments as DP ON DP.dept_no = DE.dept_no
+INNER JOIN departments as DP ON DP.dept_no = DE.dept_no;
 
 --List first name, last name, and sex for employees whose first name is "Hercules" and last names begin with "B."
 SELECT first_name, last_name, sex
@@ -39,5 +39,10 @@ SELECT DE.dept_no, DP.dept_name, EMP.emp_no, EMP.last_name, EMP.first_name
 FROM dept_emp as DE
 INNER JOIN employees as EMP ON EMP.emp_no = DE.emp_no
 INNER JOIN departments as DP ON DP.dept_no = DE.dept_no
-WHERE dept_name IN ('Sales', 'Development')
+WHERE dept_name IN ('Sales', 'Development');
 
+--In descending order, list the frequency count of employee last names, i.e., how many employees share each last name.
+SELECT last_name, COUNT(last_name) AS "name count"
+FROM employees
+GROUP BY last_name
+ORDER BY "name count" DESC;
